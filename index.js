@@ -13,7 +13,7 @@ const fi = (function() {
 
     map: function(collection, callback) {
       let result = []
-      for(let key of Object.keys(collection)) {
+      for(let key in collection) {
         result.push(callback(collection[key], key, collection))
       }
       return result
