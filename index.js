@@ -5,7 +5,7 @@ const fi = (function() {
     },
 
     each: function(collection, callback) {
-      for(let key of Object.keys(collection)) {
+      for(let key in collection) {
         callback(collection[key], key, collection)
       }
       return collection
@@ -27,14 +27,14 @@ const fi = (function() {
       // delete first from copy if no start
       acc ? "" : delete coll[0]
 
-      for(let key of Object.keys(coll)) {
+      for(let key in coll) {
         result = (callback(result, coll[key], coll))
       }
       return result
     },
 
     find: function(collection, predicate) {
-      for(let key of Object.keys(collection)) {
+      for(let key in collection) {
         if (predicate(collection[key], key, collection))
         {
           return collection[key]
@@ -44,7 +44,7 @@ const fi = (function() {
 
     filter: function(collection, predicate) {
       let include = []
-      for(let key of Object.keys(collection)) {
+      for(let key in collection) {
         if (predicate(collection[key], key, collection))
         {
           include.push(collection[key])
@@ -77,7 +77,7 @@ const fi = (function() {
 
     compact: function(collection) {
       let include = []
-      for(let key of Object.keys(collection)) {
+      for(let key in collection) {
         if (collection[key])
         {
           include.push(collection[key])
